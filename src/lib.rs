@@ -1,3 +1,8 @@
+mod model;
+
+pub use model::{ BoxTable, Table, View };
+
+
 #[cfg(test)]
 mod tests {
     #[test]
