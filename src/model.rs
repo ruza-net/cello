@@ -1,22 +1,25 @@
-pub trait View<E> {
-    fn view(&mut self) -> E;
+pub trait View {
+    type Input;
+    type Output;
+
+    fn view(&mut self, _: Self::Input) -> Self::Output;
 }
 
-pub type BoxTable<T, E> = Box<dyn Table<E, Title = T>>;
+pub type BoxTable<T, In, Out> = Box<dyn Table<In, Out, Title = T>>;
 
-pub trait Table<E>: View<E> {
+pub trait Table<In, Out>: View<Input = In, Output = Out> {
     type Title;
 
     fn title(&self) -> &Self::Title;
 
-    fn content(&self) -> &[BoxTable<Self::Title, E>];
-    fn content_mut(&mut self) -> &mut [BoxTable<Self::Title, E>];
+    fn content(&self) -> &[BoxTable<Self::Title, In, Out>];
+    fn content_mut(&mut self) -> &mut [BoxTable<Self::Title, In, Out>];
 
 
     fn len(&self) -> usize;
-    fn insert(&mut self, at: usize, cell: BoxTable<Self::Title, E>);
+    fn insert(&mut self, at: usize, cell: BoxTable<Self::Title, In, Out>);
 
-    fn push(&mut self, cell: BoxTable<Self::Title, E>) {
+    fn push(&mut self, cell: BoxTable<Self::Title, In, Out>) {
         self.insert(self.len() - 1, cell)
     }
 }
