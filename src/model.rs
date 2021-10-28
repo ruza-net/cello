@@ -5,7 +5,6 @@ pub trait View {
     fn view(&mut self, _: Self::Input) -> Self::Output;
 }
 
-pub type BoxTable<T, In, Out> = Box<dyn Table<In, Out, Title = T>>;
 
 pub trait Table<In, Out>: View<Input = In, Output = Out> {
     type Title;

@@ -1,6 +1,6 @@
 mod model;
 
-pub use model::{ BoxTable, Table, View };
+pub use model::{ Table, View };
 
 
 #[cfg(test)]
