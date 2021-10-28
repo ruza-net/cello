@@ -16,9 +16,4 @@ pub trait Table<In, Out>: View<Input = In, Output = Out> {
 
 
     fn len(&self) -> usize;
-    fn insert(&mut self, at: usize, cell: BoxTable<Self::Title, In, Out>);
-
-    fn push(&mut self, cell: BoxTable<Self::Title, In, Out>) {
-        self.insert(self.len() - 1, cell)
-    }
 }
