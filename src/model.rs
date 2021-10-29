@@ -15,3 +15,11 @@ pub trait Table<In, Out>: View<In, Out> {
 
     fn len(&self) -> usize;
 }
+
+pub trait TableMut<In, Out>: Table<In, Out> {
+    fn insert(&mut self, at: usize, cell: Self::Child);
+
+    fn push(&mut self, cell: Self::Child) {
+        self.insert(self.len(), cell)
+    }
+}
