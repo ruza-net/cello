@@ -1,6 +1,6 @@
 mod model;
 
-pub use model::{ Table, TableMut, View };
+pub use model::{ Table, TableMut, View, WalkCommand };
 
 
 #[cfg(test)]

@@ -23,3 +23,7 @@ pub trait TableMut<In, Out>: Table<In, Out> {
         self.insert(self.len(), cell)
     }
 }
+
+pub trait WalkCommand {
+    fn walk<R>(self, action: impl FnOnce(Self) -> R) -> R where Self: Sized;
+}
