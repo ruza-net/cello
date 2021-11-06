@@ -8,6 +8,7 @@ pub trait Table<In, Out>: View<In, Out> {
     type Child: Table<In, Out, Title = Self::Title, Child = Self::Child>;
 
     fn title(&self) -> &Self::Title;
+    fn title_mut(&mut self) -> &mut Self::Title;
 
     fn content(&self) -> &[Self::Child];
     fn content_mut(&mut self) -> &mut [Self::Child];
