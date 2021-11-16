@@ -15,6 +15,10 @@ pub trait Table<In, Out>: View<In, Out> {
 
 
     fn len(&self) -> usize;
+
+    fn is_empty(&self) -> bool {
+        self.len() == 0
+    }
 }
 
 pub trait TableMut<In, Out>: Table<In, Out> {
